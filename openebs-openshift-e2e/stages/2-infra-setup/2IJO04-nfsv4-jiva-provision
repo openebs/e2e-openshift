@@ -17,10 +17,10 @@ gittoken=$(echo "$github_token")
 time="date"
 current_time=$(eval $time)
 
-oc adm policy add-scc-to-user privileged system:serviceaccount:app-nfsv4-ns:nfs-provisioner
-oc adm policy add-scc-to-user anyuid system:serviceaccount:app-nfsv4-ns:nfs-provisioner
-oc adm policy add-scc-to-user privileged system:serviceaccount:app-nfsv4-ns:default
-oc adm policy add-scc-to-user anyuid system:serviceaccount:app-nfsv4-ns:default
+oc adm policy add-scc-to-user privileged system:serviceaccount:app-nfs-ns:nfs-provisioner
+oc adm policy add-scc-to-user anyuid system:serviceaccount:app-nfs-ns:nfs-provisioner
+oc adm policy add-scc-to-user privileged system:serviceaccount:app-nfs-ns:default
+oc adm policy add-scc-to-user anyuid system:serviceaccount:app-nfs-ns:default
 
 bash openebs-openshift-e2e/utils/pooling jobname:storage-policies
 bash openebs-openshift-e2e/utils/e2e-cr jobname:nfsv4-jiva-provision jobphase:Running init_time:"$current_time" jobid:"$job_id" pipelineid:"$pipeline_id" testcaseid:"$case_id" openebs_version:"$releaseTag"
